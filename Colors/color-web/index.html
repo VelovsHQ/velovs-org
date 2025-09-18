@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velovs Brand Color Palette</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* -------------------
+        Global Styles 
+        -------------------
+        Using the palette's own colors for the page design.
+        - Background: Soft Ivory (#F5F5F2)
+        - Text: Charcoal Gray (#1F1F1F)
+        - Main Heading: Deep Emerald Green (#2D6A4F)
+        */
+        :root {
+            --emerald: #2D6A4F;
+            --gold: #D4AF37;
+            --navy: #1E3A8A;
+            --charcoal: #1F1F1F;
+            --ivory: #F5F5F2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        /* -------------------
+        Layout & Typography
+        -------------------
+        */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--emerald);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        /* -------------------
+        Palette Grid
+        -------------------
+        */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* -------------------
+        Color Card Styling
+        -------------------
+        */
+        .color-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .color-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-swatch {
+            height: 150px;
+        }
+
+        .color-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .color-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .color-info p {
+            font-size: 0.95rem;
+            color: #666;
+            font-family: monospace;
+        }
+
+        /* Feedback for copy action */
+        .copy-feedback {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Velovs Brand Palette</h1>
+        <p class="subtitle">The official color palette defining the Velovs brand identity.</p>
+
+        <div class="palette-grid">
+            <div class="color-card" data-hex="#2D6A4F">
+                <div class="color-swatch" style="background-color: #2D6A4F;"></div>
+                <div class="color-info">
+                    <h3>Deep Emerald</h3>
+                    <p>#2D6A4F</p>
+                </div>
+                <div class="copy-feedback">Copied!</div>
+            </div>
+
+            <div class="color-card" data-hex="#D4AF37">
+                <div class="color-swatch" style="background-color: #D4AF37;"></div>
+                <div class="color-info">
+                    <h3>Rich Gold</h3>
+                    <p>#D4AF37</p>
+                </div>
+                 <div class="copy-feedback">Copied!</div>
+            </div>
+
+            <div class="color-card" data-hex="#1E3A8A">
+                <div class="color-swatch" style="background-color: #1E3A8A;"></div>
+                <div class="color-info">
+                    <h3>Trust Navy</h3>
+                    <p>#1E3A8A</p>
+                </div>
+                 <div class="copy-feedback">Copied!</div>
+            </div>
+
+            <div class="color-card" data-hex="#1F1F1F">
+                <div class="color-swatch" style="background-color: #1F1F1F;"></div>
+                <div class="color-info">
+                    <h3>Charcoal Gray</h3>
+                    <p>#1F1F1F</p>
+                </div>
+                 <div class="copy-feedback">Copied!</div>
+            </div>
+            
+            <div class="color-card" data-hex="#F5F5F2">
+                <div class="color-swatch" style="background-color: #F5F5F2; border: 1px solid #eee;"></div>
+                <div class="color-info">
+                    <h3>Soft Ivory</h3>
+                    <p>#F5F5F2</p>
+                </div>
+                 <div class="copy-feedback">Copied!</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.color-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const hexCode = card.getAttribute('data-hex');
+                
+                // Copy to clipboard
+                navigator.clipboard.writeText(hexCode).then(() => {
+                    // Show feedback
+                    const feedback = card.querySelector('.copy-feedback');
+                    feedback.style.opacity = '1';
+
+                    // Hide feedback after 2 seconds
+                    setTimeout(() => {
+                        feedback.style.opacity = '0';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
